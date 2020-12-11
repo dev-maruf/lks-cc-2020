@@ -5,14 +5,14 @@ services:
       args:
         user: docker
         uid: 1000
-      context: ./config/app
+      context: ./docker/app
       dockerfile: Dockerfile
     image: lks
     container_name: lks-app
     restart: unless-stopped
     working_dir: /var/www/
     volumes:
-      - ./www:/var/www
+      - ./laravel:/var/www
     networks:
       - lks
 
@@ -39,8 +39,8 @@ services:
     ports:
       - 8000:80
     volumes:
-      - ./www:/var/www
-      - ./config/nginx:/etc/nginx/conf.d/
+      - ./laravel:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d/
     networks:
       - lks
 
