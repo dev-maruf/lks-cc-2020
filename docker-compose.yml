@@ -1,0 +1,52 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: docker
+        uid: 1000
+      context: ./config/app
+      dockerfile: Dockerfile
+    image: lks
+    container_name: lks-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./www:/var/www
+    networks:
+      - lks
+
+  db:
+    image: mysql:5.7
+    container_name: lks-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - mysql-datavolume:/var/lib/mysql
+    networks:
+      - lks
+
+  nginx:
+    image: nginx:alpine
+    container_name: lks-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./www:/var/www
+      - ./config/nginx:/etc/nginx/conf.d/
+    networks:
+      - lks
+
+networks:
+  lks:
+    driver: bridge
+
+volumes:
+  mysql-datavolume:
