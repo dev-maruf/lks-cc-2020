@@ -25,3 +25,15 @@ Migrate schema to database
 ```bash
 php artisan migrate
 ```
+
+Create new model with schema
+
+```bash
+php artisan make:model Book -m
+```
+
+Change schema in `laravel/database/migrations` and then migrate new schema to database
+
+```bash
+php artisan migrate
+```
