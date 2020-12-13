@@ -17,4 +17,19 @@ class BookController extends Controller
         $books = Book::all();
         return view('book.list', compact('books'));
     }
+
+    public function add()
+    {
+        return view('book.add');
+    }
+
+    public function insert(Request $request)
+    {
+        $book = new Book;
+        $book->isbn = $request->isbn;
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->save();
+        return redirect(route('book.list'));
+    }
 }
