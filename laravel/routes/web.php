@@ -21,5 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/books', 'BookController@index')->name('book.list');
 Route::get('/books/add', 'BookController@add')->name('book.add');
 Route::post('/books/insert', 'BookController@insert')->name('book.insert');
-Route::get('/books/{id}/edit', 'BookController@index')->name('book.edit');
+Route::get('/books/{id}/edit', 'BookController@edit')->name('book.edit');
+Route::post('/books/{id}/update', 'BookController@update')->name('book.update');
 Route::get('/books/{id}/delete', 'BookController@index')->name('book.delete');

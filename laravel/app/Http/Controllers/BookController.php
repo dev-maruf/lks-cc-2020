@@ -32,4 +32,20 @@ class BookController extends Controller
         $book->save();
         return redirect(route('book.list'));
     }
+
+    public function edit($id)
+    {
+        $book = Book::find($id);
+        return view('book.edit', compact('book'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = Book::find($id);
+        $book->isbn = $request->isbn;
+        $book->title = $request->title;
+        $book->description = $request->description;
+        $book->save();
+        return redirect(route('book.list'));
+    }
 }
