@@ -33,3 +33,4 @@ class CreateBooksTable extends Migration
         Schema::dropIfExists('books');
     }
 }
+// INSERT INTO books (isbn, title, description) VALUES ('123456-789', 'Judul Bukunya', 'Deskripsinya');

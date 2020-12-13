@@ -9,12 +9,12 @@
 
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
                     @endif
 
-                    You are logged in!
+                    You are logged in! Go to <a href="{{route('book.list')}}">books</a> to show book list
                 </div>
             </div>
         </div>

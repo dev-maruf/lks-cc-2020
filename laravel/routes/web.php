@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/books', 'BookController@index')->name('book.list');
+Route::get('/books/add', 'BookController@index')->name('book.add');
+Route::get('/books/{id}/edit', 'BookController@index')->name('book.edit');
+Route::get('/books/{id}/delete', 'BookController@index')->name('book.delete');
