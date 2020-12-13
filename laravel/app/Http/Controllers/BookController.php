@@ -48,4 +48,11 @@ class BookController extends Controller
         $book->save();
         return redirect(route('book.list'));
     }
+
+    public function delete($id)
+    {
+        $book = Book::find($id);
+        $book->delete();
+        return redirect(route('book.list'));
+    }
 }
